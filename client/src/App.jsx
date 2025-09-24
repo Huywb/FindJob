@@ -1,8 +1,5 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+
 import './App.css'
-import { Button } from '@/components/ui/button'
 import {createBrowserRouter, RouterProvider } from 'react-router-dom'
 import AppLayout from './Layout/AppLayout'
 import LandingPage from './pages/LandingPage'
@@ -12,6 +9,7 @@ import JobListing from './pages/job-listing'
 import MyJobs from './pages/my-jobs'
 import SaveJob from './pages/save-job'
 import PostJob from './pages/post-job'
+import { ThemeProvider } from '@/components/theme-provider'
 
 function App() {
 
@@ -53,10 +51,10 @@ function App() {
 
 
   return (
-    <div>
+    <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
       <RouterProvider router={router}></RouterProvider>
-    </div>
-  ) 
+    </ThemeProvider>
+  )
 }
 
 export default App
