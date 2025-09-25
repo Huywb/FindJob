@@ -10,6 +10,9 @@ import MyJobs from './pages/my-jobs'
 import SaveJob from './pages/save-job'
 import PostJob from './pages/post-job'
 import { ThemeProvider } from '@/components/theme-provider'
+import { Protect, SignIn } from '@clerk/clerk-react'
+import ProtectRouter from './components/protect-router'
+import Login from './components/Login'
 
 function App() {
 
@@ -23,27 +26,28 @@ function App() {
         },
         {
           path: '/onboarding',
-          element: <Onboarding />
+          element: 
+          <ProtectRouter><Onboarding /></ProtectRouter>
         },
         {
           path: 'job',
-          element: <Job />
+          element: <ProtectRouter><Job /></ProtectRouter>
         },
         {
           path: 'list-job',
-          element: <JobListing></JobListing>
+          element: <ProtectRouter><JobListing /></ProtectRouter>
         },
         {
           path: 'my-jobs',
-          element: <MyJobs></MyJobs>
+          element: <ProtectRouter><MyJobs /></ProtectRouter>
         },
         {
           path: 'saved-jobs',
-          element: <SaveJob></SaveJob>
+          element: <ProtectRouter><SaveJob /></ProtectRouter>
         },
         {
           path: 'post-job',
-          element: <PostJob></PostJob>
+          element: <ProtectRouter><PostJob /></ProtectRouter>
         }
       ]
     }]
