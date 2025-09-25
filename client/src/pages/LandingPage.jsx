@@ -1,9 +1,12 @@
 import React, { useRef } from 'react'
 import logo from '../../public/logo.png'
-import { Accordion, AccordionItem, AccordionTrigger } from '@/components/ui/accordion'
+import banner from '../../public/banner.jpeg'
+import { Accordion, AccordionItem, AccordionTrigger,AccordionContent } from '@/components/ui/accordion'
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel'
+import { CardContent, CardHeader,Card,CardTitle, } from '@/components/ui/card'
 import { companies } from '../utils/companies'
 import Autoplay from "embla-carousel-autoplay"
+import { cardQuestions, questions } from '../utils/questions'
 const LandingPage = () => {
   const plugin = useRef(
     Autoplay({ delay: 2000, stopOnInteraction: true })
@@ -19,7 +22,7 @@ const LandingPage = () => {
         <button className='px-10 py-3 font-bold rounded-md bg-red-500 text-white'>Post a Jobs</button>
       </div>
 
-      <Carousel plugins={[plugin.current]} className="w-full gap-2">
+      <Carousel plugins={[plugin.current]} className="w-full gap-2 py-6">
       <CarouselContent className="flex gap-2 items-center">
         {companies.map((company) => {return(
           <CarouselItem key={company.id} className="basis-1/4 lg:basis-1/6">
@@ -28,11 +31,25 @@ const LandingPage = () => {
         )})}
       </CarouselContent>
       </Carousel>
-      <section>
-        <img src={logo} alt=""  className='h-20'/>
+
+      <img src={banner} alt="" className='w-full' />
+
+      <section className='flex gap-4 flex-wrap itemcenter justify-center'>
+        {
+          cardQuestions.map((q) => {return(
+            <Card key={q.id} className="w-[45%]">
+              <CardHeader>
+                <CardTitle className='text-2xl font-bold'>{q.question}</CardTitle>    
+              </CardHeader>
+              <CardContent>
+                <p className='text-gray-300 text-lg'>{q.answer}</p>
+              </CardContent>
+            </Card>
+          )}
+          )}
       </section>
+
     </main>
-    
   )
 }
 
