@@ -38,7 +38,7 @@ function App() {
           element: <MyJobs></MyJobs>
         },
         {
-          path: 'save-job',
+          path: 'saved-jobs',
           element: <SaveJob></SaveJob>
         },
         {
