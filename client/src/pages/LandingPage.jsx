@@ -7,6 +7,7 @@ import { CardContent, CardHeader,Card,CardTitle, } from '@/components/ui/card'
 import { companies } from '../utils/companies'
 import Autoplay from "embla-carousel-autoplay"
 import { cardQuestions, questions } from '../utils/questions'
+import { Link } from 'react-router-dom'
 const LandingPage = () => {
   const plugin = useRef(
     Autoplay({ delay: 2000, stopOnInteraction: true })
@@ -18,8 +19,8 @@ const LandingPage = () => {
         <p className='text-center text-gray-300 text-xl mt-4'>Exlore thousand of job listings or find the perfect candidate</p>
       </section>
       <div className='flex items-center justify-center gap-2'>
-        <button className='px-10 py-3 font-bold rounded-md bg-blue-500 text-white'>Find Jobs</button>
-        <button className='px-10 py-3 font-bold rounded-md bg-red-500 text-white'>Post a Jobs</button>
+        <Link to='/job'><button className='cursor-pointer px-10 py-3 font-bold rounded-md bg-blue-500 text-white'>Find Jobs</button></Link>
+        <Link to='/post-job'><button className='cursor-pointer px-10 py-3 font-bold rounded-md bg-red-500 text-white'>Post a Jobs</button></Link>
       </div>
 
       <Carousel plugins={[plugin.current]} className="w-full gap-2 py-6">

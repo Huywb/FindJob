@@ -4,9 +4,13 @@ import { Button } from '@/components/ui/button'
 import { Link } from 'react-router-dom'
 import { SignedIn, SignedOut, SignIn, SignInButton, UserButton, useUser } from '@clerk/clerk-react'
 import { BriefcaseBusiness, Heart, PenBox } from 'lucide-react'
+import Login from './Login'
 const Header = () => {
   const [checklogin, setCheckLogin] = useState(false)
   const {user} = useUser()
+  console.log(checklogin)
+
+
   return (
     <nav className='py-4 flex items-center justify-between'>
       <Link to={"/"}>
@@ -16,7 +20,7 @@ const Header = () => {
       <div className='flex gap-4'>
         <SignedOut>
           <div onClick={() => setCheckLogin(true)}>
-          <SignInButton  />
+          Login
           </div>
         </SignedOut>
         {
@@ -39,7 +43,12 @@ const Header = () => {
           </UserButton>
         </SignedIn>
       </div>
-      
+
+      {
+        checklogin && (
+        <Login setCheckLogin={setCheckLogin}></Login>
+      )}
+
     </nav>
   )
 }
