@@ -49,6 +49,16 @@ const LandingPage = () => {
           )}
       </section>
 
+      <section>
+      <Accordion type="single" collapsible className="w-full mx-auto">
+        {questions.map((q) => {return(
+          <AccordionItem key={q.id} value={`item-${q.id}`}>
+            <AccordionTrigger className="font-bold text-xl">{q.question}</AccordionTrigger>
+            <AccordionContent className=" text-lg text-gray-300">{q.answer}</AccordionContent>
+          </AccordionItem>
+        )})}
+      </Accordion>
+      </section>
     </main>
   )
 }
