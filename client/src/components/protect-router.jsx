@@ -11,6 +11,10 @@ const ProtectRouter = ({ children }) => {
         toast.error("You must be logged in to access this page")
         return <Navigate to='/'></Navigate>
     }
+    if(isLoaded && isSignedIn && !user?.unsafeMetadata?.role && pathname !== "/onboarding"){
+        toast.error("You must complete the onboarding process")
+        return <Navigate to='/onboarding'></Navigate>
+    }
   return children
 }
 
