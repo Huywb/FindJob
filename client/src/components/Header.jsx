@@ -8,7 +8,7 @@ import Login from './Login'
 const Header = () => {
   const [checklogin, setCheckLogin] = useState(false)
   const {user} = useUser()
-  console.log(checklogin)
+  console.log(user?.unsafeMetadata)
 
 
   return (
@@ -24,7 +24,7 @@ const Header = () => {
           </div>
         </SignedOut>
         {
-          user && <Button variant="outline"><PenBox></PenBox> <Link to="/post-job">Post a Job</Link></Button>
+          user?.unsafeMetadata?.role == 'recruiter' ? <Button variant="outline"><PenBox></PenBox> <Link to="/post-job">Post a Job</Link></Button> : null
         }
         <SignedIn >
           <UserButton
